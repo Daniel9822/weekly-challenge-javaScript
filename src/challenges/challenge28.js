@@ -19,61 +19,7 @@
  */
 
 const sortList = (array, shape) => {
-  // function aleatorio(min, max) {
-  //   return Math.floor(Math.random() * (max - min + 1) + min)
-  // }
-
-  //[1, 4, 6, 8, 2]
-  //    i
-  //j
-  // aux = 1
-
-  // Selection sort
-  for (let i = 0; i < array.length; i++) {
-    let j = i - 1
-    while (j >= 0 && array[j] > array[i] ) {
-      const aux = array[i]
-      array[i] = array[j]
-      array[j] = aux
-      i--
-      j--
-    }
-  } 
-  if (shape === 'Desc') {
-    return array.reverse()
-  }
-
-  return array
-
-  // QuickSort
-
-  //   if(array.length === 0) return array
-  //   let medio = aleatorio(0, array.length -1);
-  //   let pivot = array[medio];
-  //   let arrayLeft = [];
-  //   let arrayRight = [];
-  //   let arrayPivot = []
-
-  //   array.forEach((element)=>{
-  //    if(element === pivot){
-  //     arrayPivot.push(element)
-  //    }
-  //    if(element !== pivot){
-  //     if(element > pivot){
-  //       arrayRight.push(element)
-  //     } else{
-  //       arrayLeft.push(element)
-  //     }
-  //   }
-  // })
-
-  //   arrayLeft = sortList(arrayLeft)
-  //   arrayRight = sortList(arrayRight)
-
-  //   if(shape === 'Desc') {
-  //     return arrayLeft.concat(arrayPivot).concat(arrayRight).reverse();
-  //   }
-  //   return arrayLeft.concat(arrayPivot).concat(arrayRight)
+  // code here
 }
 
 module.exports = sortList

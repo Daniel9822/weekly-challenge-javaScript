@@ -25,23 +25,6 @@ const path = require('path')
 
 const calculate = async (pathname) => {
   //code here
-  const filePath = path.join(__dirname, pathname)
-
-  const data = await fs.promises.readFile(filePath, 'utf-8')
-  const lines = data.split('\r\n').map((line) => line.trim())
-  const firt = lines[0]
-  const last = lines[lines.length - 1]
-
-  if (isNaN(firt) || isNaN(last)) {
-    throw new Error('invalid expression')
-  }
-
-  const result = resolveExpression(lines)
-  return result
-}
-
-const resolveExpression = (arr) => {
-  return eval(arr.join(''))
 }
 
 module.exports = calculate

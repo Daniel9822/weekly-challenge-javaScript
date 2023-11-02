@@ -56,45 +56,6 @@
 
 const trickOrTreat = (list, srt) => {
   //code here
-  let allitems = 0
-  let arrResult = []
-
-  let giftsOrScares =
-    srt === 'dulces'
-      ? ['🍰', '🍬', '🍡', '🍭', '🍪', '🍫', '🧁', '🍩']
-      : ['🎃', '👻', '💀', '🕷', '🕸', '🦇']
-
-  if (srt === 'trato') {
-    allitems = handleTreat(list)
-  } else {
-    allitems = handleTrick(list)
-  }
-
-  for (let i = 0; i < allitems; i++) {
-    const ramdomIndex = Math.floor(Math.random() * giftsOrScares.length)
-    arrResult.push(giftsOrScares[ramdomIndex])
-  }
-  return arrResult
-}
-
-const handleTrick = (list) => {
-  let altura = 0
-  const count = list.reduce((acc, value) => {
-    let name = Math.floor(value.nombre.length / 2)
-    let edad = value.edad % 2 === 0 ? 2 : 0
-    altura += value.altura
-    return acc + name + edad
-  }, 0)
-  return Math.floor(altura / 100) * 3 + count
-}
-
-const handleTreat = (list) => {
-  return list.reduce((acc, value) => {
-    let countName = value.nombre.length
-    let edad = Math.floor(value.edad > 10 ? 10 / 3 : value.edad / 3)
-    let altura = Math.floor(value.altura / 50) * 2
-    return acc + countName + edad + altura
-  }, 0)
 }
 
 module.exports = trickOrTreat

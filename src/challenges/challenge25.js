@@ -1,5 +1,5 @@
 /*
- * Reto #25 
+ * Reto #25
  * PIEDRA, PAPEL, TIJERA
  * Fecha publicación enunciado: 20/06/22
  * Fecha publicación resolución: 27/06/22
@@ -23,29 +23,6 @@
 
 const rockScissorsPaper = (plays) => {
   //code here
-  let playerOne = 0
-  let playerTwo = 0
-
-  const cases = {
-    P: 'R',
-    R: 'S',
-    S: 'P'
-  }
-
-  for (let i = 0;i < plays.length;i++) {
-    const play = cases[plays[i][0]]
-    const play2 = cases[plays[i][1]]
-
-    if (!play || !play2) return null
-
-    if (plays[i][1] === play) playerOne += 1
-    if (plays[i][0] === play2) playerTwo += 1
-  }
-
-  const tie = playerOne === playerTwo
-  const winner = playerOne > playerTwo ? 'player 1' : 'player 2'
-
-  return tie ? 'tie' : winner
 }
 
 module.exports = rockScissorsPaper

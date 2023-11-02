@@ -19,21 +19,7 @@
  */
 
 const fizzBuzz = (number) => {
-  if (!number) return null;
-  const response = {
-    3: "fizz",
-    5: "buzz",
-    7: "woof"
-  };
-
-  let result = "";
-  for (const key in response) {
-    if (number % key === 0) {
-      result += response[key];
-    }
-  }
-
-  return result;
+  // code here 
 };
 
 module.exports = fizzBuzz;

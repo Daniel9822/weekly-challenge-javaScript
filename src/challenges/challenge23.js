@@ -20,23 +20,6 @@
 
 const calculateSet = (arr1, arr2, bool) => {
   //code here
-  if (bool) {
-    return arr1.reduce((acc, value) => {
-      if (arr2.includes(value)) {
-        acc.push(value)
-      }
-
-      return acc
-    }, [])
-  }
-  const convine = Array.from(new Set(arr1.concat(arr2)))
-  return convine.reduce((acc, value) => {
-    if (!arr2.includes(value) || !arr1.includes(value)) {
-      acc.push(value)
-    }
-    return acc
-  }, [])
-
 }
 
 module.exports = calculateSet

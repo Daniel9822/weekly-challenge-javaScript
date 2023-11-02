@@ -18,15 +18,7 @@
  */
 
 const areOrthogonal = (arr1, arr2) => {
-  if (!Array.isArray(arr1) || !Array.isArray(arr2))
-    throw new Error('invalid type')
-
-  const isEqualLength = arr1.length === arr2.length
-  if (!isEqualLength) return null
-
-  const check = arr1[0] * arr2[0] + arr1[1] * arr2[1]
-
-  return check === 0
+  // code here
 }
 
 module.exports = areOrthogonal

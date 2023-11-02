@@ -28,15 +28,6 @@
 
 const athleteState = (steps, track) => {
   // code here
-  const jump = '|'
-  const run = '_'
-
-  for (let i = 0;i < steps.length;i++) {
-    if ((steps[i] === 'jump') & (track[i] !== jump)) return false
-    if ((steps[i] === 'run') & (track[i] !== run)) return false
-  }
-
-  return true
 }
 
 module.exports = athleteState

@@ -24,26 +24,6 @@
 
 const decimalToBinary = (num) => {
   // code here
-
-  const isArray = Array.isArray(num)
-  if (isNaN(num) && !isArray) {
-    return null
-  }
-
-  if (!isArray) {
-    return decimal(num)
-  }
-  return num.map((n) => {
-    return decimal(n)
-  })
-}
-
-let decimal = (num) => {
-  let sum = 0
-  for (let i = 0; i < num.length; i++) {
-    sum += num[i] * Math.pow(2, num.length - 1 - i)
-  }
-  return sum
 }
 
 module.exports = decimalToBinary

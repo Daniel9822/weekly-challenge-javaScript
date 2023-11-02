@@ -17,8 +17,7 @@
  */
 
 const reverseStr = (str) => {
-  // code here 
-  return str.split('').reverse().join('').split(' ').reverse().join(' ')
+  // code here
 }
 
 module.exports = reverseStr

@@ -21,14 +21,6 @@
 
 const numberOfBoomerangs = (numbers) => {
   //code here
-  if (!Array.isArray(numbers) || !numbers?.length) return null
-  let countBoomerangs = 0
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] === numbers[i + 2] && numbers[i + 1] !== numbers[i]) {
-      countBoomerangs++
-    }
-  }
-  return countBoomerangs === 0 ? null : countBoomerangs
 }
 
 module.exports = numberOfBoomerangs

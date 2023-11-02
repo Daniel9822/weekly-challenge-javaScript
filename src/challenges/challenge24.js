@@ -18,19 +18,6 @@
 
 const greatestCommonDivisor = (n1, n2) => {
   //code here
-  let max = Math.max(n1, n2)
-  let min = Math.min(n1, n2)
-  let residuo = max % min
-  if (residuo === 0) return min
-  return greatestCommonDivisor(min, residuo)
-
-}
-
-
-const leatCommonMultiple = (n1, n2) => {
-  //code here
-  return n1 * n2 / greatestCommonDivisor(n1, n2)
-
 }
 
 module.exports = {

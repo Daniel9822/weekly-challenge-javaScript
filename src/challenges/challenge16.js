@@ -21,54 +21,7 @@
 
 const daysBetween = (date1, date2) => {
   //code here
-  const regex = /^([0-9]){2}[/]([0-9]){2}[/]([0-9]){4}$/
-  if (!regex.test(date1) || !regex.test(date2)) {
-    throw new Error('Cadena de fecha no valida')
-  }
-
-  const check = validateDate(date1, date2)
-  if (!check) {
-    throw Error('Cadena de fecha no valida')
-  }
-
-  const unDia = 24 * 60 * 60 * 1000
-
-  const fecha1Parts = date1.split('/').reverse().join('/')
-  const fecha2Parts = date2.split('/').reverse().join('/')
-
-  const fecha1Ms = new Date(fecha1Parts).getTime()
-  const fecha2Ms = new Date(fecha2Parts).getTime()
-
-  if (isNaN(fecha1Ms) || isNaN(fecha2Ms)) {
-    throw new Error('Cadena de fecha no valida')
-  }
-
-  return Math.abs(Math.round((fecha1Ms - fecha2Ms) / unDia))
 }
 
-const validateDate = (d1, d2) => {
-  const [dayOne, monthOne] = d1.split('/')
-  const [dayTwo, monthTwo] = d2.split('/')
-
-  const maxDay = 31
-  const maxMonth = 12
-  const febraryExect = 29
-
-  if (dayOne > maxDay || dayTwo > maxDay) {
-    return false
-  }
-  if (monthOne > maxMonth || monthTwo > maxMonth) {
-    return false
-  }
-
-  if (
-    (monthOne === '02' && Number(dayOne) > febraryExect) ||
-    (monthTwo === '02' && Number(dayTwo) > febraryExect)
-  ) {
-    return false
-  }
-
-  return true
-}
 
 module.exports = daysBetween

@@ -23,17 +23,6 @@
 
 const isArmstrong = (n) => {
   //code here
-  if (typeof n !== 'number') {
-    throw new Error('Debe ser un numero')
-  }
-  const digits = n.toString().split('')
-  const totalDigits = digits.length
-
-  const armstrong = digits.reduce((acc, value) => {
-    return acc + Math.pow(value, totalDigits)
-  }, 0)
-
-  return armstrong === n
 }
 
 module.exports = isArmstrong

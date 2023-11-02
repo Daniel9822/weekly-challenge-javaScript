@@ -19,21 +19,6 @@
 
 const lostNumbers = (numbers) => {
   // code here
-  if (!Array.isArray(numbers)) throw new Error()
-
-  const isNotValid = numbers.some((e) => typeof e !== 'number')
-  if (isNotValid) throw new Error()
-
-  const max = Math.max(...numbers)
-  const min = Math.min(...numbers)
-  const result = []
-
-  for (let i = min + 1; i < max; i++) {
-    if (!numbers.includes(i)) {
-      result.push(i)
-    }
-  }
-  return result
 }
 
 module.exports = lostNumbers

@@ -22,31 +22,8 @@
  */
 
 const isPrimo = (n) => {
-  if (!n || n < 0) return null
-
-  let count = 0
-
-  if (Array.isArray(n)) {
-    for (let i = 0;i < n.length;i++) {
-      if (n[i] < 0) return null
-      const verify = primo(n[i])
-      if (verify) count++
-    }
-    return count
-  }
-  return primo(n)
+  // code here
 }
 
-const primo = (n) => {
-  if (n === 2) return true
-  if (n % 2 === 0) return false
-
-  for (let i = 3;i * i <= n;i++) {
-    if (n % i === 0) {
-      return false
-    }
-  }
-  return true
-}
 
 module.exports = isPrimo

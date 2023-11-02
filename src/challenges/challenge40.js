@@ -19,28 +19,6 @@
 
 const mostRepeatedVowel = (str) => {
   //code here
-
-  if (typeof str !== 'string' || !str) {
-    throw new Error()
-  }
-
-  let vowels = {
-    a: 0,
-    e: 0,
-    i: 0,
-    o: 0,
-    u: 0
-  }
-
-  let toLowel = str.toLowerCase()
-  for (let i in toLowel) {
-    if (vowels.hasOwnProperty(toLowel[i])) {
-      vowels[toLowel[i]]++
-    }
-  }
-  const values = Object.values(vowels)
-  const max = Math.max(...values)
-  return ['a', 'e', 'i', 'o', 'u'][values.findIndex((e) => e === max)]
 }
 
 module.exports = mostRepeatedVowel

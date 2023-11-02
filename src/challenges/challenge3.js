@@ -22,12 +22,7 @@
  */
 
 const fibonacci = (n, sequence = [0, 1]) => {
-  if (n <= 2) return sequence
-
-  const nextFib = sequence[sequence.length - 1] + sequence[sequence.length - 2]
-  sequence.push(nextFib)
-
-  return fibonacci(n - 1, sequence)
+  // code here
 }
 
 module.exports = fibonacci

@@ -25,21 +25,6 @@ const sizeOf = require('image-size')
 
 const aspectRatio = async (url) => {
   // code here
-  if (!url) return null
-  try {
-    const response = await axios({
-      method: 'get',
-      url: url,
-      responseType: 'arraybuffer'
-    })
-    const dimensions = sizeOf(response.data)
-    const imageAspectRatio = dimensions.width / dimensions.height
-
-    return Number(imageAspectRatio.toFixed(2))
-  } catch (error) {
-    console.error('Error al descargar la imagen', error)
-    return null
-  }
 }
 
 module.exports = aspectRatio
