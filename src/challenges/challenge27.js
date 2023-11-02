@@ -33,7 +33,44 @@ const products = require('../helpers/vendingMachine')
  */
 
 const vendingMachine = (n, money) => {
-  // code here
+  const approvedCurrencies = [5, 10, 50, 100, 200]
+  for (let i in money) {
+    if (!approvedCurrencies.includes(money[i])) {
+      throw new Error('currency not supported')
+    }
+  }
+
+  const product = Object.entries(products)
+  const productSelect = product[n]
+
+  if (!productSelect) throw new Error('error when making purchase')
+  const [name, obj] = productSelect
+
+  const { price } = obj
+
+  const totalMoney = money.reduce((acc, m) => {
+    return acc + m
+  }, 0)
+
+  if (totalMoney < price) throw new Error('error when making purchase')
+
+  let currentValue = price
+  let result = []
+
+  for (let i = 0; i < money.length; i++) {
+    currentValue = money[i] - currentValue // 50
+
+    if (currentValue >= 0) {
+      result.push(name, money.slice(i + 1, money.length))
+      if (currentValue > 0) {
+        result[1].unshift(currentValue)
+      }
+
+      return result
+    }
+
+    currentValue = Math.abs(currentValue)
+  }
 }
 
 module.exports = vendingMachine

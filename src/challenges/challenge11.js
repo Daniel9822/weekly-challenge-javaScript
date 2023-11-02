@@ -55,7 +55,41 @@ for (const key in morseCodeAlphabet) {
 
 const decoder = (str) => {
   // code here
+  if (morseCode.hasOwnProperty(str[0])) {
+    return morseToText(str)
+  }
+
+  return textToMorse(str)
 }
 
+const morseToText = (str) => {
+  const words = str.split(' ')
+  let text = ''
+
+  words.forEach((word, index) => {
+    if (index > 0) text += ''
+    if (word === '') text += ' '
+    text += morseCode[word] ?? ''
+  })
+
+  return text
+}
+
+const textToMorse = (str) => {
+  const words = str.split(' ')
+  let morse = ''
+
+  words.forEach((word, index) => {
+    if (index > 0 && word !== '') morse += '  '
+
+    word.split('').forEach((letter, index) => {
+      if (index > 0 && letter !== '') morse += ' '
+
+      morse += morseCodeAlphabet[letter.toUpperCase()]
+    })
+  })
+
+  return morse
+}
 
 module.exports = decoder

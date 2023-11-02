@@ -25,6 +25,17 @@
 
 const countWords = (word) => {
   //code here
+  const wordToLower = word.toLowerCase()
+  const wordReply = {}
+
+  for (let i in wordToLower) {
+    if (!wordReply.hasOwnProperty(wordToLower[i])) {
+      wordReply[wordToLower[i]] = 1
+    } else {
+      wordReply[wordToLower[i]]++
+    }
+  }
+  return wordReply
 }
 
 module.exports = countWords

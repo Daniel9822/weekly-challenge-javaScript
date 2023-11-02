@@ -19,7 +19,11 @@
  */
 
 const isPalindromo = (str) => {
-  // code here
+  if (!str || typeof str !== 'string') return null
+
+  const wordReverse = str.split('').reverse().join('')
+
+  return str === wordReverse
 }
 
 module.exports = isPalindromo

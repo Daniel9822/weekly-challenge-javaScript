@@ -36,4 +36,84 @@ function BinarySearchTree(value) {
   this.right = null
 }
 
+BinarySearchTree.prototype.insert = function (value) {
+  if (value > this.value) {
+    if (!this.right) {
+      this.right = new BinarySearchTree(value)
+    } else {
+      this.right.insert(value)
+    }
+  }
+
+  if (value < this.value) {
+    if (!this.left) {
+      this.left = new BinarySearchTree(value)
+    } else {
+      this.left.insert(value)
+    }
+  }
+}
+
+BinarySearchTree.prototype.contains = function (value) {
+  if (value === this.value) return true
+
+  if (value > this.value) {
+    if (!this.right) return false
+    else {
+      return this.right.contains(value)
+    }
+  }
+
+  if (value < this.value) {
+    if (!this.left) return false
+    else {
+      return this.left.contains(value)
+    }
+  }
+}
+
+BinarySearchTree.prototype.size = function () {
+  let count = 1
+  if (this.left) {
+    count += this.left.size()
+  }
+
+  if (this.right) {
+    count += this.right.size()
+  }
+
+  return count
+}
+BinarySearchTree.prototype.depthFirstForEach = function (cb, order) {
+  //in-order (left- root - right) defect
+  //pre-order: (root- left- right)
+  //'post-order' (izquierda - derecha - root)
+  if (!order || order === 'in-order') {
+    if (this.left) this.left.depthFirstForEach(cb, order)
+    cb(this.value)
+    if (this.right) this.right.depthFirstForEach(cb, order)
+  } else if (order === 'pre-order') {
+    cb(this.value)
+    if (this.left) this.left.depthFirstForEach(cb, order)
+    if (this.right) this.right.depthFirstForEach(cb, order)
+  } else {
+    if (this.left) this.left.depthFirstForEach(cb, order)
+    if (this.right) this.right.depthFirstForEach(cb, order)
+    cb(this.value)
+  }
+}
+BinarySearchTree.prototype.breadthFirstForEach = function (cb, array = []) {
+  cb(this.value)
+  if (this.left) {
+    array.push(this.left)
+  }
+  if (this.right) {
+    array.push(this.right)
+  }
+
+  if (array.length > 0) {
+    array.shift().breadthFirstForEach(cb, array)
+  }
+}
+
 module.exports = BinarySearchTree

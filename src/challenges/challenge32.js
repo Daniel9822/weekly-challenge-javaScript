@@ -15,7 +15,29 @@
  */
 
 const mergeSort = (arr) => {
-  // code here
+  if (!Array.isArray(arr)) throw TypeError('type error')
+
+  if (arr.length === 0) return arr
+  const medium = Math.floor(arr.length / 2)
+  const pivot = arr[medium]
+
+  let arrayLeft = []
+  let arrayRight = []
+
+  arr.forEach((value) => {
+    if (value !== pivot) {
+      if (value > pivot) {
+        arrayRight.push(value)
+      } else {
+        arrayLeft.push(value)
+      }
+    }
+  })
+
+  arrayLeft = mergeSort(arrayLeft)
+  arrayRight = mergeSort(arrayRight)
+
+  return arrayLeft.concat(pivot).concat(arrayRight)
 }
 
 module.exports = mergeSort

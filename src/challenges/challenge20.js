@@ -17,7 +17,27 @@
 
 const timeToMillis = (dias, horas, minutos, segundos) => {
   //code here
+
+  if (!dias || !horas || !minutos || !segundos) return null
+  const checkeType = check({ dias, horas, minutos, segundos })
+  if (!checkeType) throw new Error('type error')
+
+  const days = dias * 24 * 60 * 60 * 1000
+  const hours = horas * 60 * 1000
+  const min = minutos * 60 * 1000
+  const seg = segundos * 1000
+
+  return days + hours + min + seg
 }
 
+const check = (arg) => {
+  for (const key in arg) {
+    if (typeof arg[key] !== 'number') {
+      return false
+    }
+  }
+
+  return true
+}
 
 module.exports = timeToMillis

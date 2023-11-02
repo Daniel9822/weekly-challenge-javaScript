@@ -11,9 +11,9 @@
  * - Handle hashtag: Los que comienzan por "#"
  * - Handle web: Los que comienzan por "www.", "https://" y finalizan con un dominio (.com, .es...)
  *
- * Ejemplo:
- * handleDetector('hey @Daniel9822 viste mi web https://miweb.com #programacion') ->
- * respuesta: { mentions: 1, tags: 1, webs: 1 }
+ * Ejemplo: 
+ * handleDetector('hey @Daniel9822 viste mi web https://miweb.com #programacion') -> 
+ * respuesta: { mentions: 1, tags: 1, webs: 1 } 
  * Información adicional:
  * - Usa el canal de nuestro Discord (https://mouredev.com/discord) "🔁reto-semanal"
  *   para preguntas, dudas o prestar ayuda a la comunidad.
@@ -24,6 +24,35 @@
 
 const handlesDetector = (handles) => {
   //code here
+  if (!handles || typeof handles !== 'string') return null
+  const separate = handles.split(' ')
+
+  const obj = {
+    mentions: 0,
+    tags: 0,
+    webs: 0
+  }
+  separate.forEach((e) => {
+    if (/@[A-Za-z]/ig.test(e)) {
+      obj['mentions']++
+    }
+    if (
+      /\B#([A-Za-z0-9]{2,})(?![~!@#$%^&*()=+_`\-\|\\/'\[\]\{\}]|[?.,]*\w)/i.test(
+        e
+      )
+    ) {
+      obj['tags']++
+    }
+
+    if (
+      /[A-Za-z]+:\/\/([A-Za-z0-9]+(\.[A-Za-z0-9]+)+)/i.test(e) ||
+      /([A-Za-z0-9]+(\.[A-Za-z0-9]+)+)/i.test(e)
+    ) {
+      obj['webs']++
+    }
+  })
+
+  return obj
 }
 
 module.exports = handlesDetector

@@ -22,7 +22,38 @@
 
 const checkTicTacToe = (tictactoe) => {
   //code here
+  if (tictactoe.length < 3) return null
+  const [top, meddle, bottom] = tictactoe
+
+  const cases = [
+    top,
+    meddle,
+    bottom,
+    [top[0], meddle[0], bottom[0]],
+    [top[1], meddle[1], bottom[1]],
+    [top[2], meddle[2], bottom[2]],
+    [top[0], meddle[1], bottom[2]],
+    [top[2], meddle[1], bottom[0]]
+  ]
+
+  let winners = []
+  cases.forEach((element) => {
+    const winer = checkRows(element)
+    if (winer) winners.push(winer)
+  })
+
+  const twoWinners = winners.length === 2 && winners[0] !== winners[1]
+  if (!winners?.length) return 'Empate'
+  return twoWinners ? null : winners[0]
 }
 
+const checkRows = (row) => {
+  const firt = row[0]
+  const checkEquals = row.every((ele) => {
+    return ele === firt
+  })
+
+  return checkEquals ? firt : false
+}
 
 module.exports = checkTicTacToe

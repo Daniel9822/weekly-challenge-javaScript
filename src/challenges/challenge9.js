@@ -21,6 +21,24 @@
 
 const isBalanced = (expression) => {
   //code here
+  const stack = []
+  const map = {
+    '{': '}',
+    '[': ']',
+    '(': ')'
+  }
+
+  for (let char of expression) {
+    if (char === '{' || char === '[' || char === '(') {
+      stack.push(char)
+    } else if (char === '}' || char === ']' || char === ')') {
+      if (stack.length === 0) return false
+      let last = stack.pop()
+      if (map[last] !== char) return false
+    }
+  }
+
+  return stack.length === 0
 }
 
 module.exports = isBalanced

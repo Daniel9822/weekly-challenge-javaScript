@@ -15,7 +15,7 @@
  *
  * debes calcular el poder de cada batallon y retornar el ganador. 'bondadosas' o 'malvados' si hay un empate retorna 'tie'
  * en caso que un batallon aparezca y el otro no, gana el batallon que aparecio.
- *
+ * 
  * - Cada ejército puede estar compuesto por un número de integrantes variable de cada raza.
  *
  * Información adicional:
@@ -27,7 +27,26 @@
  */
 
 const battleForTheMiddleEarth = (bondadosas, malvados) => {
-  // code here
+  if (!bondadosas?.length && malvados) {
+    return 'malvados'
+  }
+  if (bondadosas.length && !malvados.length) {
+    return 'bondadosas'
+  }
+
+  const powerBondadosas = bondadosas.reduce((acc, value) => {
+    const allPower = value.power * value.amount
+    return acc + allPower
+  }, 0)
+
+  const powerMalvados = malvados.reduce((acc, value) => {
+    const allPower = value.power * value.amount
+    return acc + allPower
+  }, 0)
+
+  if (powerBondadosas === powerMalvados) return 'tie'
+  const winnerBondadosas = powerBondadosas > powerMalvados
+  return winnerBondadosas ? 'bondadosas' : 'malvados'
 }
 
 module.exports = battleForTheMiddleEarth

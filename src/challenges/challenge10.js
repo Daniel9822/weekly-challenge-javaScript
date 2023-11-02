@@ -17,6 +17,14 @@
 
 const decimalToBinary = (decimal, binary = '') => {
   //code here
+  if (decimal === 0) return Number(binary.split('').reverse().join(''))
+  if (decimal < 0 || !decimal) return false
+
+  const remainder = decimal % 2
+  binary += remainder
+  decimal = Math.floor(decimal / 2)
+
+  return decimalToBinary(decimal, binary)
 }
 
 module.exports = decimalToBinary

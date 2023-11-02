@@ -24,6 +24,57 @@ class LinkedList {
     this.head = null
     this.length = 0
   }
+  insert(value) {
+    const node = new Node(value)
+
+    if (!this.head) {
+      this.head = node
+    } else {
+      let current = this.head
+      while (current.next) {
+        current = current.next
+      }
+
+      current.next = node
+    }
+    this.length++
+  }
+  remove() {
+    if (!this.head) return null
+    if (this.head && !this.head.next) {
+      let aux = this.head.value
+      this.head = null
+      this.length--
+      return aux
+    }
+    let current = this.head
+
+    while (current.next.next) {
+      current = current.next
+    }
+    let aux = current.next.value
+    current.next = null
+    this.length--
+    return aux
+  }
+  search(value) {
+    if (!this.head) return null
+
+    let current = this.head
+    while (current) {
+      if (typeof value === 'function') {
+        if (value(current.value)) {
+          return current.value
+        }
+      }
+      if (current.value === value) {
+        return current.value
+      }
+      current = current.next
+    }
+
+    return null
+  }
 }
 
 class Node {

@@ -26,6 +26,36 @@ class HachTable {
     this.buckets = []
     this.numBuckets = 35
   }
+  hash(key) {
+    let sum = 0
+    for (let i in key) {
+      sum += key.charCodeAt(i)
+    }
+    return sum % this.numBuckets
+  }
+  set(key, value) {
+    if (typeof key !== 'string') throw TypeError('invalid type')
+    const index = this.hash(key)
+
+    if (!this.buckets[index]) {
+      this.buckets[index] = {}
+    }
+
+    this.buckets[index][key] = value
+  }
+  get(key) {
+    const index = this.hash(key)
+
+    if (!this.buckets[index]?.hasOwnProperty(key)) {
+      return null
+    }
+    return this.buckets[index][key]
+  }
+  hasKey(key) {
+    const index = this.hash(key)
+    return this.buckets[index].hasOwnProperty(key)
+  }
 }
+
 
 module.exports = HachTable

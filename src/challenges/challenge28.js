@@ -19,7 +19,22 @@
  */
 
 const sortList = (array, shape) => {
-  // code here
+  
+  for (let i = 0; i < array.length; i++) {
+    let j = i - 1
+    while (j >= 0 && array[j] > array[i]) {
+      const aux = array[i]
+      array[i] = array[j]
+      array[j] = aux
+      i--
+      j--
+    }
+  }
+  if (shape === 'Desc') {
+    return array.reverse()
+  }
+
+  return array
 }
 
 module.exports = sortList

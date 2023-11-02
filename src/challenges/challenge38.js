@@ -21,6 +21,26 @@
 
 const temperatureConverter = (temperature) => {
   //code here
+  const verify = temperature.endsWith('°C') || temperature.endsWith('°F')
+  const number = Number(temperature.split('°').shift())
+
+  if (!temperature || !verify || isNaN(number)) {
+    throw new Error()
+  }
+
+  const convert = {
+    '°C': (num) => {
+      const cal = (num * 9) / 5 + 32
+      return Math.round(cal) + '°F'
+    },
+    '°F': (num) => {
+      const cal = ((num - 32) * 5) / 9
+      return Math.round(cal) + '°C'
+    }
+  }
+
+  const end = temperature.slice(-2)
+  return convert[end](number)
 }
 
 module.exports = temperatureConverter

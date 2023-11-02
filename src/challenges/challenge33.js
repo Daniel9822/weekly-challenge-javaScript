@@ -19,6 +19,23 @@ class Queue {
     this.stack = []
     this._length = 0
   }
+
+  enqueue(value) {
+    this.stack.push(value)
+    this._length++
+  }
+
+  dequeue() {
+    if (this._length === 0) {
+      return undefined
+    }
+    this._length--
+    return this.stack.shift()
+  }
+
+  size() {
+    return this._length
+  }
 }
 
 module.exports = Queue

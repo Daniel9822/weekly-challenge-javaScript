@@ -19,6 +19,30 @@
 
 const nonCommon = (str1, str2) => {
   // code here
+  if (str1 === str2) return ['', '']
+
+  const findNonCommon = (str1, str2) => {
+    let nonCommonLetters = ''
+    const lettersMap = {}
+
+    for (let i = 0; i < str1.length; i++) {
+      const char = str1[i]
+      if (!lettersMap[char]) {
+        lettersMap[char] = true
+      }
+    }
+
+    for (let j = 0; j < str2.length; j++) {
+      const char = str2[j]
+      if (!lettersMap[char] && !nonCommonLetters.includes(char)) {
+        nonCommonLetters += char
+      }
+    }
+
+    return nonCommonLetters
+  }
+
+  return [findNonCommon(str2, str1), findNonCommon(str1, str2)]
 }
 
 module.exports = nonCommon

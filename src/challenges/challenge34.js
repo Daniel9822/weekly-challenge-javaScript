@@ -16,7 +16,21 @@
  */
 
 const findSecondGreater = (numbers) => {
-  // code here
+  if (!numbers) return null
+
+  let max = numbers[0]
+  let second = 0
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > max) {
+      second = max
+      max = numbers[i]
+    }
+    if (numbers[i] > second && numbers[i] < max) {
+      second = numbers[i]
+    }
+  }
+  return second
 }
 
 module.exports = findSecondGreater

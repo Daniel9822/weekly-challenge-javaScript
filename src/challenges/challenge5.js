@@ -24,7 +24,13 @@
  */
 
 const poligonoArea = (poligon, base, value2) => {
-  // code here
-};
+  const poligonsCalc = {
+    triangle: (base * value2) / 2,
+    rectangle: base * value2,
+    square: base * base
+  }
 
-module.exports = poligonoArea;
+  return poligonsCalc[poligon]
+}
+
+module.exports = poligonoArea

@@ -19,6 +19,11 @@
 
 const asynSuma = async (n1, n2, time) => {
   //code here
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(n1 + n2)
+    }, time)
+  })
 }
 
 module.exports = asynSuma

@@ -19,6 +19,17 @@
 
 const capitalize = (str) => {
   //code here
+  const text = str.split(' ')
+  let result = ''
+
+  text.forEach((element) => {
+    const firt = element.substring(0, 1).toUpperCase()
+    const completWord = firt + element.substring(1)
+    if (completWord !== '') {
+      result += completWord + ' '
+    }
+  })
+  return result.trimEnd()
 }
 
 module.exports = capitalize
